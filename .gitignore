@@ -1,0 +1,13 @@
+node_modules/
+
+./config/default.js
+
+/client/build
+
+.DS_Store
+/client/.env.local
+/client/.env.development.local
+/clinet/.env.test.local
+/client/.env/production/local
+
+npm-debug.log*
