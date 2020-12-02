@@ -1,6 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
+import AuthContext from '../../context/auth/authContext';
+import AlertContext from '../../context/alert/alertContext';
+const Login = (props) => {
+  const alertContext = useContext(AlertContext);
+  const authContext = useContext(AuthContext);
 
-const Login = () => {
+  const { setAlert } = alertContext;
+  const { login, error, clearErrors, isAuthenticated } = authContext;
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      props.history.push('/');
+    }
+
+    if (error === 'Invalid credentials') {
+      setAlert(error, 'danger');
+      clearErrors();
+    }
+    //eslint-disable-next-line
+  }, [error, isAuthenticated, props.history]);
+
   const [user, setUser] = useState({
     email: '',
     password: '',
@@ -11,6 +30,11 @@ const Login = () => {
   const onChange = (e) => setUser({ ...user, [e.target.name]: e.target.value });
   const onSubmit = (e) => {
     e.preventDefault();
+    if (!email || !password) {
+      setAlert('Please fill all fields');
+    } else {
+      login({ email, password });
+    }
   };
 
   return (
@@ -24,6 +48,7 @@ const Login = () => {
             type="email"
             className="validate"
             onChange={onChange}
+            required
           />
           <label className="active" htmlFor="email">
             Email
@@ -40,6 +65,7 @@ const Login = () => {
             type="password"
             className="validate"
             onChange={onChange}
+            required
           />
           <label className="active" htmlFor="password">
             Password
