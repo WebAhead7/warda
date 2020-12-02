@@ -7,7 +7,7 @@ const Alerts = () => {
     alertContext.alerts.map((alert) => {
       return (
         <div key={alert.id} className="card-panel  red darken-1">
-          <i class="small material-icons">add</i>
+          <i className="small material-icons">add</i>
           {alert.msg}
         </div>
       );
