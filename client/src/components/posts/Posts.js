@@ -12,14 +12,13 @@ const Posts = () => {
     //eslint-disable-next-line
   }, []);
 
-  console.log(posts);
+  console.log(loading);
+  if (loading) {
+    return <Spinner />;
+  }
 
   if (posts.length === 0) {
     return <h1>No posts</h1>;
-  }
-
-  if (loading) {
-    return <Spinner />;
   }
 
   return (

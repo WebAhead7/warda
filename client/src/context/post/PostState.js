@@ -3,7 +3,7 @@ import axios from 'axios';
 import PostContext from './postContext';
 import postReducer from './postReducer';
 
-import { ADD_POST, GET_POSTS, POST_ERROR } from '../types';
+import { GET_POSTS, POST_ERROR, POST_LOAD } from '../types';
 
 const PostState = (props) => {
   const initialState = {
@@ -13,9 +13,12 @@ const PostState = (props) => {
   };
 
   const [state, dispatch] = useReducer(postReducer, initialState);
+  // Post load
+  const loadPost = () => dispatch({ type: POST_LOAD });
   // Get posts
   const getPosts = async () => {
     try {
+      loadPost();
       const res = await axios.get('/api/posts');
       dispatch({ type: GET_POSTS, payload: res.data });
     } catch (error) {
@@ -24,6 +27,7 @@ const PostState = (props) => {
   };
   // Add post
   const addPost = async (post) => {
+    loadPost();
     const config = {
       header: {
         'Content-Type': 'application/json',

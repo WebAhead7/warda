@@ -1,5 +1,5 @@
 /* eslint-disable import/no-anonymous-default-export */
-import { ADD_POST, GET_POSTS, POST_ERROR } from '../types';
+import { ADD_POST, GET_POSTS, POST_ERROR, POST_LOAD } from '../types';
 
 export default (state, action) => {
   switch (action.type) {
@@ -12,6 +12,8 @@ export default (state, action) => {
       };
     case POST_ERROR:
       return { ...state, error: action.payload, loading: false };
+    case POST_LOAD:
+      return { ...state, loading: true };
     default:
       return state;
   }
