@@ -3,7 +3,7 @@ import PostContext from '../../context/post/postContext';
 
 const PostForm = () => {
   const postContext = useContext(PostContext);
-
+  const { addPost } = postContext;
   const [post, setPost] = useState({
     title: '',
     content: '',
@@ -13,7 +13,7 @@ const PostForm = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    postContext.addPost(post);
+    addPost(post);
     setPost({
       title: '',
       content: '',
@@ -35,31 +35,32 @@ const PostForm = () => {
             <label htmlFor="title">Title</label>
           </div>
         </div>
-      </form>
-      <div className="row">
-        <form className="col s12">
-          <div className="row">
-            <div className="input-field col s12">
-              <textarea
-                value={content}
-                onChange={(e) => setPost({ title, content: e.target.value })}
-                id="textarea1"
-                className="materialize-textarea"
-              ></textarea>
-              <label htmlFor="textarea1">Textarea</label>
+
+        <div className="row">
+          <div className="col s12">
+            <div className="row">
+              <div className="input-field col s12">
+                <textarea
+                  value={content}
+                  onChange={(e) => setPost({ title, content: e.target.value })}
+                  id="textarea1"
+                  className="materialize-textarea"
+                ></textarea>
+                <label htmlFor="textarea1">Textarea</label>
+              </div>
             </div>
           </div>
-        </form>
-      </div>
+        </div>
 
-      <button
-        className="btn waves-effect waves-light"
-        type="submit"
-        name="action"
-      >
-        Submit
-        <i className="material-icons right">send</i>
-      </button>
+        <button
+          className="btn waves-effect waves-light"
+          type="submit"
+          name="action"
+        >
+          Submit
+          <i className="material-icons right">send</i>
+        </button>
+      </form>
     </div>
   );
 };

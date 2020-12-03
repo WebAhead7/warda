@@ -7,11 +7,11 @@ const User = require('../models/User');
 const Post = require('../models/Post');
 
 // @route GET api/posts
-// @desc Get all users posts
+// @desc Get all posts
 // @access Private
 router.get('/', auth, async (req, res) => {
   try {
-    const posts = await Post.find({ user: req.user.id }).sort({ date: -1 });
+    const posts = await Post.find({}).sort({ date: -1 });
     res.json(posts);
   } catch (error) {
     console.error(error.message);
