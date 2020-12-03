@@ -7,7 +7,7 @@ export default (state, action) => {
     case GET_POSTS:
       return {
         ...state,
-        posts: [...state.posts, ...action.payload],
+        posts: action.payload,
         loading: false,
       };
     case POST_ERROR:
