@@ -6,6 +6,7 @@ import Home from './components/pages/Home';
 import Posts from './components/posts/Posts';
 import Register from './components/auth/Register';
 import Login from './components/auth/Login';
+import PrivateRoute from './components/routing/PrivateRoute';
 
 import PostForm from './components/posts/PostForm';
 import Alerts from './components/layout/Alerts';
@@ -39,10 +40,10 @@ const App = () => {
               <Navbar />
               <Alerts />
               <Switch>
-                <Route exact path="/" component={Home} />
+                <PrivateRoute exact path="/" comp={Home} />
                 <Route exact path="/about" component={About} />
-                <Route exact path="/posts" component={Posts} />
-                <Route exact path="/postform" component={PostForm} />
+                <PrivateRoute exact path="/posts" comp={Posts} />
+                <PrivateRoute exact path="/postform" comp={PostForm} />
                 <Route exact path="/login" component={Login} />
                 <Route exact path="/register" component={Register} />
               </Switch>

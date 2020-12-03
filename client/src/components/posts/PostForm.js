@@ -35,32 +35,31 @@ const PostForm = () => {
             <label htmlFor="title">Title</label>
           </div>
         </div>
-
-        <div className="row">
-          <form className="col s12">
-            <div className="row">
-              <div className="input-field col s12">
-                <textarea
-                  value={content}
-                  onChange={(e) => setPost({ title, content: e.target.value })}
-                  id="textarea1"
-                  className="materialize-textarea"
-                ></textarea>
-                <label htmlFor="textarea1">Textarea</label>
-              </div>
-            </div>
-          </form>
-        </div>
-
-        <button
-          className="btn waves-effect waves-light"
-          type="submit"
-          name="action"
-        >
-          Submit
-          <i className="material-icons right">send</i>
-        </button>
       </form>
+      <div className="row">
+        <form className="col s12">
+          <div className="row">
+            <div className="input-field col s12">
+              <textarea
+                value={content}
+                onChange={(e) => setPost({ title, content: e.target.value })}
+                id="textarea1"
+                className="materialize-textarea"
+              ></textarea>
+              <label htmlFor="textarea1">Textarea</label>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <button
+        className="btn waves-effect waves-light"
+        type="submit"
+        name="action"
+      >
+        Submit
+        <i className="material-icons right">send</i>
+      </button>
     </div>
   );
 };

@@ -1,24 +1,36 @@
 import React, { useReducer } from 'react';
-import uuid from 'uuid';
+import axios from 'axios';
+//import uuid from 'uuid';
 import PostContext from './postContext';
 import postReducer from './postReducer';
 
-import { ADD_POST, DELETE_POST, UPDATE_POST } from '../types';
+import { ADD_POST, GET_POSTS } from '../types';
 
 const PostState = (props) => {
   const initialState = {
-    posts: [
-      { title: 'hey', content: 'hello' },
-      { title: 'hey2', content: 'hello' },
-      { title: 'hey3', content: 'hello' },
-    ],
+    posts: [],
   };
 
   const [state, dispatch] = useReducer(postReducer, initialState);
-
+  // Get posts
+  const getPosts = async () => {
+    try {
+      const res = axios.get('/api/posts');
+      dispatch({ type: GET_POSTS, payload: res.data });
+    } catch (error) {}
+  };
   // Add post
-  const addPost = (post) => {
-    dispatch({ type: 'ADD_POST', payload: post });
+  const addPost = async (post) => {
+    const config = {
+      header: {
+        'Content-Type': 'application/json',
+      },
+    };
+
+    try {
+      axios.post('./api/posts', post, config);
+      dispatch({ type: ADD_POST, payload: post });
+    } catch (error) {}
   };
 
   return (
@@ -26,6 +38,7 @@ const PostState = (props) => {
       value={{
         posts: state.posts,
         addPost,
+        getPosts,
       }}
     >
       {props.children}
