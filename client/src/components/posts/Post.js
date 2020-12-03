@@ -5,10 +5,13 @@ const Post = ({ post }) => {
     <Fragment>
       <div className="row" style={{ display: 'flex', alignItems: 'center' }}>
         <div className="col s12 m6" style={{ margin: '0 auto' }}>
-          <div className="card blue-grey darken-1">
-            <div className="card-content white-text">
-              <span className="card-title">{post.title}</span>
+          <div className="card pink lighten-5 ">
+            <div className="card-content black-text">
+              <span className="card-title">
+                <b>{post.title}</b>
+              </span>
               <p>{post.content}</p>
+              <small>{post.date}</small>
             </div>
           </div>
         </div>
