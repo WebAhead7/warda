@@ -31,9 +31,7 @@ const PostState = (props) => {
     };
 
     try {
-      const res = await axios.post('./api/posts', post, config);
-
-      dispatch({ type: ADD_POST, payload: res.data });
+      await axios.post('/api/posts', post, config);
     } catch (error) {
       dispatch({ type: POST_ERROR, payload: error.response.data.msg });
     }

@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 import PostContext from '../../context/post/postContext';
 
-const PostForm = () => {
+const PostForm = (props) => {
   const postContext = useContext(PostContext);
   const { addPost } = postContext;
   const [post, setPost] = useState({
@@ -18,6 +18,7 @@ const PostForm = () => {
       title: '',
       content: '',
     });
+    props.history.push('/posts');
   };
 
   return (
