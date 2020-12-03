@@ -1,4 +1,5 @@
-import React, { useState, useContext } from 'react';
+import { connect } from 'mongoose';
+import React, { useState, useContext, useEffect } from 'react';
 import PostContext from '../../context/post/postContext';
 
 const PostForm = (props) => {
@@ -11,6 +12,14 @@ const PostForm = (props) => {
 
   const { title, content } = post;
 
+  useEffect(() => {
+    if (title && content) {
+      document.getElementById('postButton').classList.add('pulse');
+    } else {
+      document.getElementById('postButton').classList.remove('pulse');
+    }
+  }, [title, content]);
+
   const onSubmit = (e) => {
     e.preventDefault();
     addPost(post);
@@ -22,7 +31,7 @@ const PostForm = (props) => {
   };
 
   return (
-    <div className="row">
+    <div className="row" style={{ width: '50%' }}>
       <form className="col s12" onSubmit={onSubmit}>
         <div className="row">
           <div className="input-field col s12">
@@ -54,11 +63,13 @@ const PostForm = (props) => {
         </div>
 
         <button
-          className="btn waves-effect waves-light"
+          className="btn waves-effect waves-light 'btn-floating'"
           type="submit"
           name="action"
+          id="postButton"
+          style={{ display: 'block', margin: '0 auto' }}
         >
-          Submit
+          Add
           <i className="material-icons right">send</i>
         </button>
       </form>
