@@ -43,8 +43,11 @@ const Register = (props) => {
   };
 
   return (
-    <form onSubmit={onSubmit}>
-      <div className="row">
+    <form onSubmit={onSubmit} style={{ marginTop: '30px' }}>
+      <div
+        className="row"
+        style={{ display: 'flex', justifyContent: 'center' }}
+      >
         <div className="input-field col s6">
           <input
             value={name}
@@ -55,6 +58,7 @@ const Register = (props) => {
             onChange={onChange}
             minLength="5"
             required
+            style={{ margin: 0 }}
           />
           <label className="active" htmlFor="name">
             Name
@@ -62,7 +66,10 @@ const Register = (props) => {
         </div>
       </div>
 
-      <div className="row">
+      <div
+        className="row"
+        style={{ display: 'flex', justifyContent: 'center' }}
+      >
         <div className="input-field col s6">
           <input
             value={email}
@@ -72,6 +79,7 @@ const Register = (props) => {
             className="validate"
             onChange={onChange}
             required
+            style={{ margin: 0 }}
           />
           <label className="active" htmlFor="email">
             Email
@@ -79,7 +87,10 @@ const Register = (props) => {
         </div>
       </div>
 
-      <div className="row">
+      <div
+        className="row"
+        style={{ display: 'flex', justifyContent: 'center' }}
+      >
         <div className="input-field col s6">
           <input
             value={password}
@@ -90,6 +101,7 @@ const Register = (props) => {
             onChange={onChange}
             minLength="6"
             required
+            style={{ margin: 0 }}
           />
           <label className="active" htmlFor="password">
             Password
@@ -97,7 +109,10 @@ const Register = (props) => {
         </div>
       </div>
 
-      <div className="row">
+      <div
+        className="row"
+        style={{ display: 'flex', justifyContent: 'center' }}
+      >
         <div className="input-field col s6">
           <input
             value={password2}
@@ -108,6 +123,7 @@ const Register = (props) => {
             onChange={onChange}
             minLength="6"
             required
+            style={{ margin: 0 }}
           />
           <label className="active" htmlFor="password2">
             Confirm Password
@@ -119,6 +135,7 @@ const Register = (props) => {
         className="btn waves-effect waves-light"
         type="submit"
         name="action"
+        style={{ display: 'block', margin: '0 auto' }}
       >
         Register
         <i className="material-icons right">send</i>

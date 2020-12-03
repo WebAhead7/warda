@@ -17,7 +17,6 @@ const Posts = () => {
     //eslint-disable-next-line
   }, []);
 
-  console.log(loading);
   if (loading) {
     return <Spinner />;
   }

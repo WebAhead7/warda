@@ -38,50 +38,62 @@ const Login = (props) => {
   };
 
   return (
-    <form onSubmit={onSubmit}>
-      <div className="row">
-        <div className="input-field col s6">
-          <input
-            value={email}
-            id="email"
-            name="email"
-            type="email"
-            className="validate"
-            onChange={onChange}
-            required
-          />
-          <label className="active" htmlFor="email">
-            Email
-          </label>
+    <div style={{ marginTop: '30px' }}>
+      <form onSubmit={onSubmit}>
+        <div
+          className="row"
+          style={{ display: 'flex', justifyContent: 'center' }}
+        >
+          <div
+            className="input-field col s6"
+            style={{ margin: 0, marginBottom: '20px' }}
+          >
+            <input
+              value={email}
+              id="email"
+              name="email"
+              type="email"
+              className="validate"
+              onChange={onChange}
+              required
+            />
+            <label className="active" htmlFor="email">
+              Email
+            </label>
+          </div>
         </div>
-      </div>
 
-      <div className="row">
-        <div className="input-field col s6">
-          <input
-            value={password}
-            id="password"
-            name="password"
-            type="password"
-            className="validate"
-            onChange={onChange}
-            required
-          />
-          <label className="active" htmlFor="password">
-            Password
-          </label>
+        <div
+          className="row"
+          style={{ display: 'flex', justifyContent: 'center' }}
+        >
+          <div className="input-field col s6" style={{ margin: 0 }}>
+            <input
+              value={password}
+              id="password"
+              name="password"
+              type="password"
+              className="validate"
+              onChange={onChange}
+              required
+            />
+            <label className="active" htmlFor="password">
+              Password
+            </label>
+          </div>
         </div>
-      </div>
 
-      <button
-        className="btn waves-effect waves-light"
-        type="submit"
-        name="action"
-      >
-        LogIn
-        <i className="material-icons right">send</i>
-      </button>
-    </form>
+        <button
+          className="btn waves-effect waves-light"
+          type="submit"
+          name="action"
+          style={{ display: 'block', margin: '0 auto' }}
+        >
+          LogIn
+          <i className="material-icons right">send</i>
+        </button>
+      </form>
+    </div>
   );
 };
 
