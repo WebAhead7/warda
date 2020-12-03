@@ -9,6 +9,11 @@ const Posts = () => {
 
   useEffect(() => {
     getPosts();
+    const interval = setInterval(() => {
+      getPosts();
+    }, 1000 * 30);
+
+    return () => clearInterval(interval);
     //eslint-disable-next-line
   }, []);
 
